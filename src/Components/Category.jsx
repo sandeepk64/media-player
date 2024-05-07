@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import VideoCard from './VideoCard'
 import { addCategoryAPI, getAVideoAPI, getCategoryAPI, removeCategoryAPI, removeVideoAPI, updateCategoryAPI } from '../Services/allAPI';
 
-function Categories({setRemoveCategoryVideoResponse}) {
+function Categories({deleteVideoCategoryResponse,setRemoveCategoryVideoResponse}) {
   const [allCategories,setAllCategories] = useState([])
   const [categoryName,SetCategoryName] = useState("")
 
@@ -19,7 +19,7 @@ function Categories({setRemoveCategoryVideoResponse}) {
 
   useEffect(()=>{
     getAllCategory()
-  },[])
+  },[deleteVideoCategoryResponse])
 
   const getAllCategory = async () =>{
     try {

@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap'
 import VideoCard from './VideoCard'
 import { addVideoAPI, getAllVideoAPI, getSingleCategoryAPI, updateCategoryAPI } from '../Services/allAPI'
 
-function View({addVideoResponse,removeCategoryVideoResponse}) {
+function View({setDeleteVideoCategoryResponse,addVideoResponse,removeCategoryVideoResponse}) {
   const [deleteResponse,setDeleteResponse] = useState("")
   const [allVideos,setAllVideos] = useState([])
   console.log(allVideos);
@@ -37,7 +37,7 @@ function View({addVideoResponse,removeCategoryVideoResponse}) {
       console.log(updateCategoryVideoList);
       const {categoryName,id} = data
       const categoryResult = await updateCategoryAPI(categoryId,{id,categoryName,allVideos:updateCategoryVideoList})
-
+      setDeleteVideoCategoryResponse(categoryResult.data)
       await addVideoAPI(videoDetails)
       getAllVideos()
     } catch (error) {
